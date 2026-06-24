@@ -1,0 +1,11 @@
+// ALU Decoder test vectors (Table 7.3)
+// ALUOp funct3 op5 funct75 _ ALUControl
+//  [1:0]  [2:0]  .   .     .   [2:0]
+00_000_0_0_010   // lw/sw      -> add (010)
+01_000_0_0_110   // beq        -> sub (110)
+10_000_0_0_010   // addi       -> add (010)
+10_000_1_0_010   // add  (R)   -> add (010)
+10_000_1_1_110   // sub  (R)   -> sub (110)
+10_010_0_0_101   // slt        -> set less than (101)
+10_110_0_0_001   // or         -> or  (001)
+10_111_0_0_000   // and        -> and (000)
