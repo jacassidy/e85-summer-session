@@ -1,7 +1,5 @@
 
 
-`include "controller.sv"
-
 module testbench();
 
   logic        clk;
@@ -20,7 +18,7 @@ module testbench();
   logic       RegWrite, MemWrite;
   
   logic [31:0]  vectornum, errors;
-  logic [39:0]  testvectors[10000:0];
+  logic [27:0]  testvectors[10000:0];
   
   logic [15:0]  actual, expected;
   logic [1:0]   ALUOp;

@@ -136,7 +136,7 @@ module controller(
 
         AdrSrc    = 1'b0;
         IRWrite   = 1'b0;
-        PCWrite   = 1'b0;
+        PCUpdate  = 1'b0;
         RegWrite  = 1'b0;
         MemWrite  = 1'b0;
         Branch    = 1'b0;
@@ -155,7 +155,7 @@ module controller(
                 ALUSrcB     = ALUSrcB10;
                 ALUOp       = ALUOp00;
                 ResultSrc   = ResultSrc10;
-                PCWrite     = 1'b1;
+                PCUpdate    = 1'b1;
             end
 
             S_Decode: begin // 1
@@ -208,7 +208,7 @@ module controller(
                 ALUSrcB     = ALUSrcB10;
                 ALUOp       = ALUOp00;
                 ResultSrc   = ResultSrc00;
-                PCWrite     = 1'b1;
+                PCUpdate    = 1'b1;
             end
 
             S_BEQ: begin // 10
@@ -219,6 +219,7 @@ module controller(
                 Branch      = 1'b1;
             end
 
+            default: ;
         endcase
     end
     
@@ -242,6 +243,7 @@ module controller(
                     default: ALUControl =   3'b000; // undefined
                 endcase
             end
+            default: ALUControl = 3'b000; // undefined
         endcase
     end
 
@@ -253,9 +255,10 @@ module controller(
             OP_ITYPE:   ImmSrc  =   2'b00; // I-type
             OP_BEQ:     ImmSrc  =   2'b10; // B-type
             OP_JAL:     ImmSrc  =   2'b11; // J-type
+            default:    ImmSrc  =   2'b00; // undefined
         endcase
     end
-    assign PCwrite = PCUpdate | (Branch & Zero);
+    assign PCWrite = PCUpdate | (Branch & Zero);
 
 endmodule
 
