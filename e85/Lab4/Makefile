@@ -1,13 +1,13 @@
 # ============================================================
-#  E85 Lab 2 — shared Verilator simulation harness
+#  E85 Lab 4 — shared Verilator simulation harness
 # ============================================================
 # This is the "parent" Makefile that the per-lab folders
-# (e.g. lab2_XX/) delegate to with `$(MAKE) -C .. ...`.
+# (e.g. lab4_XX/) delegate to with `$(MAKE) -C .. ...`.
 #
 # It hides the raw Verilator command line behind one generic
 # `sim` target. A lab-local Makefile supplies:
 #
-#   SIM_NAME   base name for the executable + waveform (e.g. fulladder)
+#   SIM_NAME   base name for the executable + waveform (e.g. adventure)
 #   TB_TOP     top-level testbench module name
 #   SRCS       space-separated .sv sources (design + testbench),
 #              named relative to RUN_DIR
@@ -23,8 +23,8 @@ SHELL := /bin/bash
 
 VERILATOR ?= verilator
 
-# Label used in progress messages. Defaults to this lab folder's name so a
-# harness copied to another lab reports that lab, not whichever it came from.
+# Label used in progress messages. Defaults to this lab folder's name so
+# a copied harness reports "[Lab4]" rather than whichever lab it came from.
 LAB_LABEL ?= $(notdir $(CURDIR))
 
 # ---- knobs supplied by the lab-local Makefile ----

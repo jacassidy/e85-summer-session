@@ -1,0 +1,27 @@
+# Verilator build output
+obj_dir/
+*.verilator_deplist.tmp
+
+# Simulation waveforms and logs
+waves/
+*.vcd
+*.fst
+*.log
+
+# Compiled objects and binaries
+*.o
+*.a
+*.d
+*.so
+
+# Build / test artifacts
+work/
+*.memfile
+*.elf
+*.hex
+score.log
+
+# Editor / OS cruft
+.DS_Store
+*.swp
+*~
